@@ -1,0 +1,14 @@
+kind create cluster --config kind.config.yml
+kubectl apply  -f namespaces/my-namespace.yml
+kubectl create configmap kong-configmap --from-file=Kong/kong.yml   --namespace=my-namespace --dry-run=client -o yaml > kong-configmap.yml
+kubectl create configmap prometheus-configmap --from-file=Prometheus/prometheus.yml   --namespace=my-namespace --dry-run=client -o yaml > prometheus-configmap.yml
+kubectl create configmap mongo-init-config --from-file=mongo-init.js=db/mongo-init.js --namespace=my-namespace  --dry-run=client -o yaml  > mongo-configmap.yml
+kubectl apply -f .\mongo-configmap.yml -f .\prometheus-configmap.yml -f .\kong-configmap.yml
+kubectl apply  -f volumes/grafana-pv.yml -f volumes/mongo-pv.yml -f volumes/portainer-pv.yml
+kubectl apply  -f volumes/grafana.pvc.yml -f volumes/mongo-pvc.yml
+kubectl apply -f portainer.yml 
+kubectl apply -f deployments/mongodb.deployment.yml -f deployments/mongo-express.deployment.yml
+kubectl apply -f services/mongodb.service.yml -f services/mongo-express.service.yml
+kubectl apply -f deployments/auth.deployment.yml -f deployments/business.deployment.yml -f deployments/io.deployment.yml
+kubectl apply -f deployments/kong.deployment.yml -f deployments/prometheus.deployment.yml -f deployments/grafana.deployment.yml
+kubectl apply -f .\services\kong.service.yml -f .\services\auth.service.yml -f .\services\io.service.yml -f .\services\business.service.yml -f .\services\grafana.service.yml -f .\services\prometheus.service.yml

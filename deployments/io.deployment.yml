@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: io-service
+  namespace: my-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: io-service
+  template:
+    metadata:
+      labels:
+        app: io-service
+    spec:
+      containers:
+      - name: io-service
+        image: registry.gitlab.com/proiect-idp-weather-app-c1/ioservice:latest
+        ports:
+        - containerPort: 8000

@@ -1,1 +1,1 @@
-# CC-PROJECT
+# Configs
