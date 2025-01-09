@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: business-service
-  namespace: my-namespace
+  namespace: appservices
 spec:
   replicas: 1
   selector:

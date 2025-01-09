@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: io-service
-  namespace: my-namespace
+  namespace: database
 spec:
   replicas: 1
   selector:

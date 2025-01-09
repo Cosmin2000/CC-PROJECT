@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-monitoring-to-app-services
+  namespace: monitoring
+spec:
+  podSelector: {}
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              name: app-services
+      ports:
+        - protocol: TCP
+          port: 6000  # business-service port
+        - protocol: TCP
+          port: 4002  # auth-service po
+  policyTypes:
+    - Ingress

@@ -2,21 +2,21 @@ _format_version: "2.1"
 
 services:
   - name: auth_service_register
-    url: http://auth-service:4002
+    url: http://auth-service.appservices.svc.cluster.local:4002
     routes:
       - name: auth_service_register_route
         paths: 
           - /auth
 
   - name: mongoexpress
-    url: http://mongoexpress:8081
+    url: http://mongoexpress.database.svc.cluster.local:8081
     routes:
       - name: mongoexpress_service_route
         paths:
           - /adminer
 
   - name: business_service
-    url: http://business-service:6000/api
+    url: http://business-service.appservices.svc.cluster.local:6000/api
     routes:
       - name: business_service_route
         paths:

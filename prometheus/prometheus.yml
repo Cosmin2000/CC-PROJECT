@@ -28,4 +28,4 @@ scrape_configs:
 
   - job_name: 'app'
     static_configs:
-      - targets: ['business_service:6000']
+      - targets: ['business_service.appservices.svc.cluster.local:6000']
