@@ -25,3 +25,6 @@ spec:
       - name: grafana-data
         persistentVolumeClaim:
           claimName: grafana-pvc
+      securityContext:
+        runAsUser: 472
+        fsGroup: 472
