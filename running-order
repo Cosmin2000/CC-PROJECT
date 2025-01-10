@@ -6,7 +6,6 @@ kubectl create configmap kong-configmap --from-file=Kong/kong.yml   --namespace=
 kubectl create configmap prometheus-configmap --from-file=prometheus/prometheus.yml   --namespace=monitoring --dry-run=client -o yaml > prometheus-configmap.yml
 kubectl create configmap mongo-init-config --from-file=mongo-init.js=db/mongo-init.js --namespace=database  --dry-run=client -o yaml  > mongo-configmap.yml
 kubectl apply -f mongo-configmap.yml -f prometheus-configmap.yml -f kong-configmap.yml
-kubectl apply -f mongodb-configmap.yml
 kubectl apply  -f volumes/grafana-pv.yml -f volumes/mongo-pv.yml -f volumes/portainer-pv.yml
 kubectl apply  -f volumes/grafana.pvc.yml -f volumes/mongo-pvc.yml
 kubectl apply -f portainer.yml 
