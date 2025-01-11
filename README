@@ -1,0 +1,36 @@
+				PROIECT CLOUD COMPUTING				
+
+
+
+Studenti: 
+    Grigore Cosmin SRIC2, Alexandra Cune SSA1, Keti Duracoska SSA1
+
+Descriere: 
+    Aplicatia are drept scop monitorizarea vremii la nivel de tara, oras si coordonate spatiale.
+    Pentru a putea avea acces la logica de business, este necesara de autentificare cu user si parola.
+    Partea de autentificare s-a facut cu token JWT.
+    Partea de business logic contine operatiile de adaugare/editare/stergere/colectare Tari, Orase, Temperaturi.
+    Temperaturi pot fi colectate folosind tara, orasul, latitudine, longitudine sau intervale de timp.
+    Testarea aplicatie se face folosind o colectie Postman.
+
+Implementarea
+    Am creat folosind Kind, un cluster Kubernetes care contine un control plane si doi worker.
+    Avem un total de 8 microservicii dupa cum urmeaza:
+    - microserviciu propriu de autentificare si autorizare 
+    - microserviciu propriu de business logic
+    - microserviciu pentru baza de date (MongoDB)
+    - microserviciu pentru utilitarul de gestiune a bazei de date (Mongo-Express)
+    - microserviciu pentru Portainer
+    - microserviciu pentru Kong (Api-Gateway)
+    - microserviciu pentru Prometheus (Monitorizare)
+    - microserviciu pentru Grafana (Vizualizare)
+
+    Pentru fiecare microservicu am creat cate un deployment si un service pentru partea de orchestrare
+    De asemenea, am folosit si volume (PersistentVolume si PersistentVolumeClaim) pentru baza de date, portainer si pentru grafana
+    Am utilizat ConfigMap-uri pentru a mapa fisierele de initializare pentru Kong, Prometheus si Mongo.
+    Pentru portainer, am descarcat manifest-ul oficial de instalare (https://docs.portainer.io/2.14/start/install/server/kubernetes/wsl#deploy-using-yaml-manifests)
+    Accesarea Portainer se face pe portul 30777, Adminer-ul Mongo-Express pe portul 30081, iar Grafana pe portul 30444. Acestea sunt
+    expuse folosind service de tip NodePort.
+    Partea de izolare s-a facut folosind namespace-uri si ... (continua Keti ca nu stiu mai departe)
+    
+
