@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: auth-service
-        image: kduracoska/proiect_idp_auth:latest
+        image: cgrigore0410/auth-sv:latest
         ports:
         - containerPort: 4002

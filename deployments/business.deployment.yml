@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: business-service
-        image: cgrigore0410/proiect-cc:latest 
+        image: cgrigore0410/business-svc:latest 
         ports:
         - containerPort: 6000
