@@ -4,8 +4,10 @@ metadata:
   name: grafana
   namespace: monitoring
 spec:
+  type: NodePort
   ports:
   - port: 3000
     targetPort: 3000
+    nodePort: 30444
   selector:
     app: grafana

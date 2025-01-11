@@ -49,6 +49,11 @@ resource "kind_cluster" "default" {
         host_port      = 30777
         protocol       = "TCP"
       }
+      extra_port_mappings {
+        container_port = 30081
+        host_port      = 30081
+        protocol       = "TCP"
+      }
     }
 
     node {

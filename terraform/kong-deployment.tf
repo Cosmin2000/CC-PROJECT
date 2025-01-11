@@ -32,18 +32,6 @@ resource "kubernetes_deployment" "kong" {
             container_port = 8000
           }
 
-          port {
-            container_port = 8443
-          }
-
-          port {
-            container_port = 8001
-          }
-
-          port {
-            container_port = 8444
-          }
-
           volume_mount {
             name       = "kong-config"
             mount_path = "/usr/local/kong/declarative/kong.yml"

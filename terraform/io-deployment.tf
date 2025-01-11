@@ -26,7 +26,7 @@ resource "kubernetes_deployment" "io_service" {
       spec {
         container {
           name  = "io-service"
-          image = "cgrigore0410/io-service:latest"
+          image = "registry.gitlab.com/proiect-idp-weather-app-c1/ioservice:latest"
 
           port {
             container_port = 8000

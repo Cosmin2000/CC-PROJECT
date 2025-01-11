@@ -6,9 +6,11 @@ resource "kubernetes_service" "mongoexpress_service" {
   }
 
   spec {
+    type = "NodePort"
     port {
       port        = 8081
       target_port = 8081
+      node_port = 30081
     }
 
     selector = {

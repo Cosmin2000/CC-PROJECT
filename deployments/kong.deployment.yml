@@ -18,9 +18,6 @@ spec:
         image: kong:latest
         ports:
         - containerPort: 8000
-        - containerPort: 8443
-        - containerPort: 8001
-        - containerPort: 8444
         volumeMounts:
         - name: kong-config
           mountPath: /usr/local/kong/declarative/kong.yml

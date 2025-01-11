@@ -4,8 +4,10 @@ metadata:
   name: mongoexpress
   namespace: database
 spec:
+  type: NodePort
   ports:
   - port: 8081
     targetPort: 8081
+    nodePort: 30081
   selector:
     app: mongoexpress

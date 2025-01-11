@@ -6,9 +6,11 @@ resource "kubernetes_service" "grafana_service" {
   }
 
   spec {
+    type = "NodePort"
     port {
       port        = 3000
       target_port = 3000
+      node_port  = 30444
     }
 
     selector = {

@@ -8,13 +8,6 @@ services:
         paths: 
           - /auth
 
-  - name: mongoexpress
-    url: http://mongoexpress.database.svc.cluster.local:8081
-    routes:
-      - name: mongoexpress_service_route
-        paths:
-          - /adminer
-
   - name: business_service
     url: http://business-service.appservices.svc.cluster.local:6000/api
     routes:

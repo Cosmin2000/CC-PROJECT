@@ -15,27 +15,6 @@ resource "kubernetes_service" "kong" {
       node_port  = 30080
     }
 
-    port {
-      name       = "proxy-ssl"
-      port       = 443
-      target_port = 8443
-      node_port  = 30443
-    }
-
-    port {
-      name       = "admin"
-      port       = 8001
-      target_port = 8001
-      node_port  = 30001
-    }
-
-    port {
-      name       = "admin-ssl"
-      port       = 8444
-      target_port = 8444
-      node_port  = 30444
-    }
-
     selector = {
       app = "kong"
     }

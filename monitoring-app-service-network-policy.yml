@@ -9,7 +9,7 @@ spec:
     - from:
         - namespaceSelector:
             matchLabels:
-              name: app-services
+              name: appservices
       ports:
         - protocol: TCP
           port: 6000  # business-service port

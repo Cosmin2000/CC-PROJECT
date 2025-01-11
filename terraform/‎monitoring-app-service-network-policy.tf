@@ -11,7 +11,7 @@ resource "kubernetes_network_policy" "allow_monitoring_to_app_services" {
       from {
         namespace_selector {
           match_labels = {
-            name = "app-services"
+            name = "appservices"
           }
         }
       }
