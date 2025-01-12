@@ -5,6 +5,6 @@ resource "kubernetes_config_map" "prometheus-configmap" {
   }
 
   data = {
-    "prometheus.yml" = file("${path.module}/../Prometheus/prometheus.yml")
+    "prometheus.yml" = file("${path.module}/../prometheus/prometheus.yml")
   }
 }

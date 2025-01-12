@@ -31,8 +31,18 @@ Implementarea
     Pentru portainer, am descarcat manifest-ul oficial de instalare (https://docs.portainer.io/2.14/start/install/server/kubernetes/wsl#deploy-using-yaml-manifests)
     Accesarea Portainer se face pe portul 30777, Adminer-ul Mongo-Express pe portul 30081, iar Grafana pe portul 30444. Acestea sunt
     expuse folosind service de tip NodePort.
-    Partea de izolare s-a facut folosind namespace-uri si ... (continua Keti ca nu stiu mai departe)
-
+    
+   Partea de izolare s-a facut folosind namespace-uri. Am creat patru namespace-uri:
+      -appservices: care contine auth-service si business-service
+      -monitoring: care contine grafana, kong si prometheus
+      -database: care contine mongo, mongoexpress si io-service
+      -portanier: care contine Portainer
+   Am generat si patru NetworkPolicies care permite comunicare intre serviciile care nu sunt in acelasi namespace:
+     - allow-app-services-to-database - realizeaza legatura intre appservices si database
+     - allow-database-to-monitoring - realizeaza legatura intre database
+     - allow-monitoring-to-app-services - realizeaza legatura intre monitoring si appservices
+     - portainer-isolation - Portainer interacționează doar cu infrastructura Kubernetes și nu ar trebui să comunice direct cu restul serviciilor.
+    
     Am integrat Terraform in proiect, creand un director dedicat, "terraform/", unde am convertit fisierele existente in format .yml în formatul specific Terraform, .tf.
     In fisierul main.tf, am definit principalii provideri, kind si kubernetes, alaturi de configurarile necesare pentru crearea clusterului si a namespace-urilor.
     Restul fisierelor din directorul "terraform/" includ: configuratii pentru crearea Persistent Volumes (PV) si Persistent Volume Claims (PVC); initializarea serviciilor si a deployment-urilor aplicatiei, definitii pentru network policies; fisiere de configurare pentru integrarea Kong si Prometheus.
